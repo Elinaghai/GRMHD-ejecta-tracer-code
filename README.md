@@ -1,6 +1,4 @@
-# GRMHD-ejecta-tracer-code
-@author: Elina Ghai, Imperial College London
-Email: eg1022@ic.ac.uk (or elina.ghai@hotmail.co.uk after June 2026)
+
 # GRMHD-ejecta-tracer-code
 
 When neutron stars collide and coalesce in a Binary Neutron Star (BNS) merger, a non-negligible fraction of
@@ -30,7 +28,7 @@ a rate of ~150 particles per minute, per node, for a dataset of ~250 iterations.
 
 I would also like to acknowledge the work of Guiseppe Rivieccio at the University of Valencia, whose contributions and ideas made this work possible.
 Last but not least, I would like to acknowledge the contributions of my supervisor Milton Ruiz, whose insights shaped this project.
-## Authors
+## Author
 
 - [@Elinaghai](https://github.com/Elinaghai)
 You may contact me at eg1022@ic.ac.uk for any enquiries regarding these codes.
