@@ -122,4 +122,4 @@ These codes may be executed by submitting the batch files available in the repos
 ```bash
 sbatch job_script_tracer.pbs
 ```
-grid_code.py must be executed first, followed by tracer_code.py. After this, nucleosynthesis.py and animation.py can be executed in any order.
+grid_code.py must be executed first, followed by tracer_code.py. After this, nucleosynthesis_code.py and animation_code.py can be executed in any order.
