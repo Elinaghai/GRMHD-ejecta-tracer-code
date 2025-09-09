@@ -1,6 +1,8 @@
 # GRMHD-ejecta-tracer-code
 @author: Elina Ghai, Imperial College London
 Email: eg1022@ic.ac.uk (or elina.ghai@hotmail.co.uk after June 2026)
+@author: Elina Ghai, Imperial College London
+Email: eg1022@ic.ac.uk (or elina.ghai@hotmail.co.uk after June 2026)
 """
 
 '''
@@ -26,9 +28,10 @@ This produces the need for a system of codes which generate, select and trace la
 the simulation itself- which is the result of this work. It can select all types of ejecta, and traces particles at 
 a rate of ~150 particles per minute, per node, for a dataset of ~250 iterations. 
 
-.......................................................................................................................
+
+........................................................................................................................
                                                      The codes
-.......................................................................................................................
+........................................................................................................................
 Here I present a post-processing framework consisting of 3 codes - grid_code.py, tracer_code.py and nucleo_tracer.py, 
 designed to be executed in that order.
 
@@ -66,9 +69,12 @@ Interpolations are performed by constructing RGIs for each iteration and refinem
 and ρ, which is again the slowest part. Once this is done, the code processes ~1000 particles per 
 minute, as few interpolations are required.
 
+
+
+
 .......................................................................................................................
                                                 Testing (Speed, Complexity, Issues)
-.......................................................................................................................                                               
+........................................................................................................................                                                
 It is of linear complexity, and is capable of tracing 50,000 particles in under 7 hours of computation (per node)
  - a drastic improvement from the ~500 tracers typically calculated within GRMHD simulations. This code is designed for
  execution on supercomputers, can also be executed on local systems by simply adjusting the number of parallel jobs.
@@ -83,7 +89,10 @@ To avoid this, only paths that begin within a certain radius R of the origin are
 filtered trajectories, which can be inputted into subsequent codes instead.
 This method improves the agreement between pre-computed and post-processed tracers to ~ 90%.
 
-.......................................................................................................................
+
+
+
+..........................................................................................................
                                                 Installations / How to use    
 
 1. Install Kuibit:
@@ -91,7 +100,7 @@ This method improves the agreement between pre-computed and post-processed trace
    Kuibit is available in PyPI. To install it with pip, use the commands below:
        python 
        pip3 install kuibit 
-   . 
+   
        
    If you are operating on a cluster without an internet connection, install Kuibit into a folder
    on your local machine and copy it into the cluster. Then, simply run:
@@ -101,7 +110,7 @@ This method improves the agreement between pre-computed and post-processed trace
    export PYTHONPATH=/path/to/kuibit/folder
    python
        
-   . Now run the following commands to install Kuibit and all other required packages for the code 
+   Now run the following commands to install Kuibit and all other required packages for the code 
    (though the others are generally already included as standard):
    
    import kuibit
@@ -122,5 +131,3 @@ This method improves the agreement between pre-computed and post-processed trace
    import time
    
 Now you can run the codes by submiting batch files available in the repository. 
-
-..........................................................................................................................
