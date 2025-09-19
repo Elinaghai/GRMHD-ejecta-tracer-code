@@ -118,7 +118,7 @@ import time
 . 
 ## Deployment
 
-These codes may be executed by submitting the batch files available in the repository. In the case of the MareNostrum supercomputer, the tracer code (for example) can be run using
+These codes may be executed by submitting batch files. In the case of the MareNostrum supercomputer, the tracer code (for example) can be run using
 ```bash
 sbatch job_script_tracer.pbs
 ```
