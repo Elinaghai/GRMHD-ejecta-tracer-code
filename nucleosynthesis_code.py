@@ -35,7 +35,7 @@ n_j = 20                     #Number of parallel processes desired (to create in
 outputfilepath = "results"   #Name of folder created to store nucleosynthesis data files
 
 #%%
-filename = "filtered_trajectories_DD2eoff_24827"  #filepath to trajectory data
+filename = ""                      #path to trajectory data
 #%% Load in trajectory H5 file
 data = []
 with h5py.File(filename, 'r') as f:
@@ -315,5 +315,6 @@ for j in range(n_p):
             f.write("{:11.4E} {:11.4E} {:11.4E} {:11.4E} {:13.4E} {:11.4E} {:11.4E}\n".format(
                 t[i], xs[i], ys[i], zs[i], rho[i], T[i], Y_e[i]
             ))
+
 
 
