@@ -21,30 +21,9 @@ from tqdm import tqdm
 from kuibit import simdir as sd
 
 #%% Load in paths, get iterations. 
-paths = ["/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_24_150154",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_24_150653",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_25_152418",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_26_163002",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_27_172131",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_28_092538",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_29_092730",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_30_102754",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_03_31_111655",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_01_143631",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_02_182231",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_03_182425",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_04_182558",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_05_182800",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_06_182810",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_07_191638",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_08_191743",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_09_191908",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_11_144651",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_12_144724",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_13_144803",
-    "/gpfs/scratch/uv106/venturif/prod_runs/hshen_eoff_mn5/data_checkpoint/25_04_24_115226"]
+paths = [] #Enter list of sfile paths to simulation data here (chronologically from earliest to latest)
     
-#%% Define function that saves our data
+#%% Define functions that save our data into H5 files and dictionaries
 def WriteDictionaryVar(h5f, data):  
      for varname in sorted(list(data)):  
          x_data = data[varname]  
@@ -84,9 +63,8 @@ def load_grid(filename):
     with open(filename, "rb") as f:
         return pickle.load(f)
     
-#%% Get spacings. EDITED FOR LAPTOP (sim)
-sim = sd.SimDir(paths[-1])
-#sim = sd.SimDir(r"C:\Users\Elina\Downloads\Master's project\data_times") 
+#%% Finds the refinement of grids of different Refinement Levels (RLs)
+sim = sd.SimDir(paths[-1]) #Extracts data from last iteration from the last day of simulation output (which we can certainly open without patch errors, as this should be post-merger)
 its = sim.gf.xyz["vx"].available_iterations
 lastit = its[-1]
 n_j = 20
@@ -108,8 +86,8 @@ spacing_dicts = Parallel(
 spacings = {k: v for d in spacing_dicts for k, v in d.items()}
 
 print("spacing at rl=5 at last frame", spacings['5'])
-#%% CHANGED FOR LAPTOP: 
-n_j = 2
+#%% Resamples grid data where we cannot immediately open it with Kuibit's get_level (due to a patch error)
+n_j = 20
 vars_to_grid = {'vx':'vx','vy':'vy', 'vz':'vz', 'igm_temperature':'T', 'rho_b':'rho', 'igm_Ye':'Ye'}
 
 def make_grids(path):
@@ -208,3 +186,4 @@ with open("its_dict.pkl", "wb") as f:
     pickle.dump(its_dict, f)
     
 print("End of script.")
+
