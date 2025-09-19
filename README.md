@@ -31,7 +31,7 @@ Last but not least, I would like to acknowledge the contributions of my supervis
 ## Author
 
 - [@Elinaghai](https://github.com/Elinaghai)
-You may contact me at eg1022@ic.ac.uk for any enquiries regarding these codes.
+- You may contact me at eg1022@ic.ac.uk for any enquiries regarding these codes.
 
 
 ## Features
