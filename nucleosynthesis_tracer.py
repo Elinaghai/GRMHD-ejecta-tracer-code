@@ -49,43 +49,8 @@ with h5py.File(filename, 'r') as f:
 
 print("loaded in data")
 #%% Load in file paths
-paths = ["/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_24_150706",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_25_153011",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_26_163002",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_27_171741",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_28_092810",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_29_092903",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_30_102929",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_31_111655",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_01_143631",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_02_100927",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_03_102057",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_04_140655",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_05_140731",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_06_140902",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_07_191615",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_08_191634",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_09_191907",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_11_144652",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_12_144724",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_13_144803",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_14_145131",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_15_093639",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_16_102956",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_24_115548",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_06_143707",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_08_165414",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_10_191447",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_11_191452",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_12_191612",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_14_091636",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_15_094314",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_16_120241",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_17_120314",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_18_120336",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_19_120426",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_21_092126"
-]
+paths = [] #Input chronological list of simulation output files from each day of simulation
+
 #%% Helper functions
 def WriteDictionaryVar(h5f, data):  
      for varname in sorted(list(data)):  
@@ -350,4 +315,5 @@ for j in range(n_p):
             f.write("{:11.4E} {:11.4E} {:11.4E} {:11.4E} {:13.4E} {:11.4E} {:11.4E}\n".format(
                 t[i], xs[i], ys[i], zs[i], rho[i], T[i], Y_e[i]
             ))
+
 
