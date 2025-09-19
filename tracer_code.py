@@ -38,43 +38,7 @@ levels = [5, 4, 3, 2, 1, 0]  #Refinement levels
 n_j = 25                    #Number of parallel processes desired (to create interpolators)
 
 #%% Load in file paths
-paths = ["/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_24_150706",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_25_153011",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_26_163002",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_27_171741",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_28_092810",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_29_092903",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_30_102929",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_03_31_111655",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_01_143631",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_02_100927",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_03_102057",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_04_140655",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_05_140731",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_06_140902",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_07_191615",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_08_191634",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_09_191907",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_11_144652",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_12_144724",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_13_144803",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_14_145131",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_15_093639",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_16_102956",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_04_24_115548",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_06_143707",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_08_165414",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_10_191447",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_11_191452",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_12_191612",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_14_091636",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_15_094314",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_16_120241",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_17_120314",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_18_120336",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_19_120426",
-    "/gpfs/scratch/uv106/venturif/prod_runs/dd2_eoff_mn5/data_checkpoint/25_05_21_092126"
-]
+paths = [] #Input a chronological list of simulation output file paths
 
 print("Number of file paths:", len(paths))
 #%% Extract the iterations (and times corresponding to each) from the data
@@ -87,9 +51,9 @@ print('Iteration step is:', dt)
 times = sim.gf.xyz["vx"].times
 lastit, firstit = its[-1], its[0]
 lasttime = times[-1]          
-print("Last iteration:", lastit)
+print("Last iteration:", lastit)          #Some useful information
 print("Last time (Code Units):", lasttime)
-
+ 
 #%% Generate particles in rl=0 grid at the last iteration (across entire simulation box)
 v_x=sim.gf.xyz["vx"][lastit].get_level(0)
 x, y, z = v_x.coordinates_meshgrid()
@@ -656,4 +620,5 @@ print("End of script.")
     
     
     
+
 
