@@ -122,4 +122,4 @@ These codes may be executed by submitting batch files. In the case of the MareNo
 ```bash
 sbatch job_script_tracer.pbs
 ```
-grid_code.py must be executed first, followed by tracer_code.py. After this, nucleosynthesis_code.py and animation_code.py can be executed in any order.
+grid_code.py must be executed first, followed by tracer_code.py. After this, nucleosynthesis_code.py and animation_code.py can be executed in any order. Note that animation_code.py is a light and straightforward code which can simply be run on the terminal without the need to submit a batch file.
