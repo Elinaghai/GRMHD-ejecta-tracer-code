@@ -21,7 +21,7 @@ from tqdm import tqdm
 from kuibit import simdir as sd
 
 #%% Load in paths, get iterations. 
-paths = [] #Enter list of sfile paths to simulation data here (chronologically from earliest to latest)
+paths = [] #Enter list of file paths to simulation data here (chronologically from earliest to latest). 
     
 #%% Define functions that save our data into H5 files and dictionaries
 def WriteDictionaryVar(h5f, data):  
@@ -97,7 +97,7 @@ def make_grids(path):
     
     sim = sd.SimDir(path)
     try:
-       simvx = sim.gf.xyz["vx"]                     #1. Can we open the data already with get_level?
+       simvx = sim.gf.xyz["vx"]                     #This checks if we can open the data with Kuibit's get_level method. If we already can, no resampling is necessary. 
        working_paths.append(path)
     except KeyError:
        msg = f"'vx' variable not present in simulation at {path} — skipping to next path"
@@ -157,7 +157,7 @@ def make_grids(path):
             except Exception as e:
                messages.append(f"Failed to make fallback grid for it={it}: {e}")
                print(f"Failed to make fallback grid for it={it}: {e}")
-               continue  # Continue to next iteration
+               continue  #If fallback grids cannot be made for whatever reason, this gets flagged up in the printout. However, subsequent grids can be made.
     
     return {
         "path": path,
@@ -168,7 +168,7 @@ def make_grids(path):
     }
 
 results = Parallel(
-    n_jobs=n_j,                  #CHANGE BACK TO 20
+    n_jobs=n_j,                 
     backend='loky', 
     verbose=n_j
 )(
@@ -186,4 +186,5 @@ with open("its_dict.pkl", "wb") as f:
     pickle.dump(its_dict, f)
     
 print("End of script.")
+
 
