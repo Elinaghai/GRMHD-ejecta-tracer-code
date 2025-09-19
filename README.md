@@ -1,5 +1,5 @@
 
-# GRMHD-ejecta-tracer-code
+# GRMHD-Simulation-Post-Processing-tracer-code
 
 When neutron stars collide and coalesce in a Binary Neutron Star (BNS) merger, a non-negligible fraction of
 neutron-rich, hot and dense matter is ejected into space. Due to the extremely high abundance of neutrons
