@@ -26,7 +26,7 @@ a rate of ~150 particles per minute, per node, for a dataset of ~250 iterations.
 
  This code extensively uses [Kuibit](https://sbozzolo.github.io/kuibit/index.html#), a library of post-processing tools to handle data from numerical relativity simulations. I thus acknowledge Gabriele Bozzola, the author of this excellent resource.
 
-I would also like to acknowledge the work of Guiseppe Rivieccio at the University of Valencia, whose contributions and ideas made this work possible.
+I would also like to acknowledge the work of Giuseppe Rivieccio at the University of Valencia, whose contributions and ideas made this work possible.
 Last but not least, I would like to acknowledge the contributions of my supervisor Milton Ruiz, whose insights shaped this project.
 ## Author
 
