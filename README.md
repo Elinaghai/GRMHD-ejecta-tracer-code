@@ -4,7 +4,7 @@
 When neutron stars collide and coalesce in a Binary Neutron Star (BNS) merger, a non-negligible fraction of
 neutron-rich, hot and dense matter is ejected into space. Due to the extremely high abundance of neutrons
 in these ejecta, and the rapid cooling/expansion that they undergo as they are expelled from the remnant, 
-BNS ejecta provide an environment ripe for R-process nucleosynthesis.
+BNS ejecta provide an environment ideal for r-process nucleosynthesis.
 
 Typical computational analysis of this phenomenon consists of computing so-called "tracers" within GRMHD simulations 
 of BNS mergers. These are Lagrangian particles which represent the motion of fluid elements within the ejecta, whose 
